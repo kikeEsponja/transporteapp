@@ -13,6 +13,8 @@ const api = async (endpoint, options = {}) => {
     if(token){
         headers.Authorization = `Bearer ${token}`;
     }
+
+    console.log('URL API:', `${API_BASE_URL}${endpoint}`);
     
     const respuesta = await fetch(
         `${API_BASE_URL}${endpoint}`,
