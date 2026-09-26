@@ -1,4 +1,5 @@
-const API_BASE_URL = '';
+//const API_BASE_URL = ''; Cuando todo funciona en local
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:3000' : 'https://transporteapp-backend.onrender.com';
 
 const api = async (endpoint, options = {}) => {
 
