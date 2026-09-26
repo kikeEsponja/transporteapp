@@ -40,4 +40,3 @@ const api = async (endpoint, options = {}) => {
 
     return datos;
 };
-//para reiniciar
