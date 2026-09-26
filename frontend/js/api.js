@@ -15,7 +15,7 @@ const api = async (endpoint, options = {}) => {
     }
 
     console.log('URL API:', `${API_BASE_URL}${endpoint}`);
-    
+
     const respuesta = await fetch(
         `${API_BASE_URL}${endpoint}`,
         {
