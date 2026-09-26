@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');
+
 const usuarioRoutes = require('./routes/usuarios.routes');
 const db = require('./config/database');
 const authRoutes = require('./routes/auth.routes');
-const cors = require('cors');
+
 const serviciosRoutes = require('./routes/servicios.routes');
 const manejarError = require('./middleware/error.middleware');
 const repostajesRoutes = require('./routes/repostajes.routes');
@@ -10,7 +12,7 @@ const vehiculosRoutes = require('./routes/vehiculos.routes');
 const tiendasRoutes = require('./routes/concesionarios.routes');
 const solicitudCancelacion = require('./routes/servicios.routes');
 
-const path = require('path');
+//const path = require('path');
 
 const app = express();
 
@@ -21,13 +23,13 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use(express.static(
-  path.join(__dirname, '../frontend')
-));
+//app.use(express.static(
+//  path.join(__dirname, '../frontend')
+//));
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend', '/vistas', 'index.html'));
-});
+//app.get("/", (req, res) => {
+//    res.sendFile(path.join(__dirname, '../frontend', '/vistas', 'index.html'));
+//});
 
 app.use('/usuarios', usuarioRoutes);
 app.use('/auth', authRoutes);
