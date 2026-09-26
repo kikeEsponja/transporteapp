@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/transp.css">
+    <link rel="shortcut icon" href="../icons/carro.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>transport</title>
+</head>
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar aprobación de solicitud</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="publicar-modal">
+                    <p>¿Está seguro de aprobar esta solicitud?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmar-aprobar">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Segundo Modal -->
+    <div class="modal fade" id="exampleModal_2" tabindex="-1" aria-labelledby="exampleModalLabel_2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel_2">Confirmar rechazo de solicitud</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="cancelar-modal">
+                    <p>¿Está seguro de rechazar esta solicitud?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmar-rechazar">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <center>
+        <h1>Solicitudes de conductores <strong id="usuario"></strong></h1>
+        
+        <div class="botones">
+            <button id="ir-admin" class="btn btn-info">Volver al panel principal</button>
+	        <button id="cerrar-sesion" class="btn btn-danger">cerrar sesión</button>
+        </div>
+        
+        <div id="solicitudes"></div>
+        <div id="texto-flotante"></div>
+    </center>
+
+    <script src="../js/admin-solicitudes.js"></script>
+	<script src="../js/api.js"></script>
+	<script src="../js/auth.js"></script>
+	
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

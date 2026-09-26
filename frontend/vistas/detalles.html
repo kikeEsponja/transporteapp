@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../icons/carro.png">
+	<link rel="stylesheet" href="../css/transp.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>transport</title>
+</head>
+<body>
+	<!-- Button trigger modal -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar Recogida</h1>
+        			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      			</div>
+      			<div class="modal-body">
+        			<form action="" id="form_recogida">
+						<label for="foto_front_recogida">Foto Frontal</label>
+						<input type="file" id="foto_front_recogida" accept="image/*" required>
+						<label for="foto_tras_recogida">Foto Trasera</label>
+						<input type="file" id="foto_tras_recogida" accept="image/*" required>
+						<label for="foto_lat_izq_recogida">Foto Lateral izquierda</label>
+						<input type="file" id="foto_lat_izq_recogida" accept="image/*" required>
+						<label for="foto_lat_der_recogida">Foto Lateral derecha</label>
+						<input type="file" id="foto_lat_der_recogida" accept="image/*" required>
+						<label for="foto_tablero_rec_recogida">Foto Kilometraje</label>
+						<input type="file" id="foto_tablero_rec_recogida" accept="image/*" required>
+						<label for="foto_tablero_comb_recogida">Foto Autonomía</label>
+						<input type="file" id="foto_tablero_comb_recogida" accept="image/*" required>
+						<label for="foto_contrato_recogida">Foto Contrato</label>
+						<input type="file" id="foto_contrato_recogida" accept="image/*" required>
+						<label for="video_recogida">Subir Video</label>
+						<input type="file" id="video_recogida" accept="video/*" required>
+					</form>
+      			</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        			<button type="button" class="btn btn-primary" id="confirmar">Aceptar</button>
+      			</div>
+    		</div>
+  		</div>
+	</div>
+	<!-- Segundo Modal -->
+	<div class="modal fade" id="exampleModal_2" tabindex="-1" aria-labelledby="exampleModalLabel_2" aria-hidden="true">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h1 class="modal-title fs-5" id="exampleModalLabel_2">Confirmar Entrega</h1>
+        			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      			</div>
+      			<div class="modal-body">
+        			<form action="" id="form_entrega">
+						<label for="foto_front_entrega">Foto Frontal</label>
+						<input type="file" id="foto_front_entrega" accept="image/*" required>
+						<label for="foto_tras_entrega">Foto Trasera</label>
+						<input type="file" id="foto_tras_entrega" accept="image/*" required>
+						<label for="foto_lat_izq_entrega">Foto Lateral izquierda</label>
+						<input type="file" id="foto_lat_izq_entrega" accept="image/*" required>
+						<label for="foto_lat_der_entrega">Foto Lateral derecha</label>
+						<input type="file" id="foto_lat_der_entrega" accept="image/*" required>
+						<label for="foto_tablero_rec_entrega">Foto Kilometraje</label>
+						<input type="file" id="foto_tablero_rec_entrega" accept="image/*" required>
+						<label for="foto_tablero_comb_entrega">Foto Autonomía</label>
+						<input type="file" id="foto_tablero_comb_entrega" accept="image/*" required>
+						<label for="foto_contrato_entrega">Foto Contrato</label>
+						<input type="file" id="foto_contrato_entrega" accept="image/*" required>
+						<label for="Video">Subir Video</label>
+						<input type="file" id="video_entrega" accept="video/*" required>
+					</form>
+
+      			</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        			<button type="button" class="btn btn-primary" id="confirmar-entrega">Aceptar</button>
+      			</div>
+    		</div>
+  		</div>
+	</div>
+
+	<!-- Tercer Modal -->
+	<div class="modal fade" id="exampleModal_3" tabindex="-1" aria-labelledby="exampleModalLabel_3" aria-hidden="true">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h1 class="modal-title fs-5" id="exampleModalLabel_3">Solicitar cancelación de servicio actual</h1>
+        			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      			</div>
+      			<div class="modal-body">
+					<h3>¿Estás realmente seguro de que quieres cancelar este servicio?</h3>
+					<h2>Se creará una solicitud, y quedará pendiente de aprobarse o rechazarse</h2>
+					<div class="form-solicitud">
+						<label for="motivo">Motivo de la solicitud</label>
+						<textarea name="motivo" id="motivo" class="motivo" required></textarea>
+					</div>
+      			</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        			<button type="button" class="btn btn-primary" id="crear-solicitud">Crear Solicitud</button>
+      			</div>
+    		</div>
+  		</div>
+	</div>
+
+	<!-- Cuarto Modal -->
+	<div class="modal fade" id="exampleModal_4" tabindex="-1" aria-labelledby="exampleModalLabel_4" aria-hidden="true">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h1 class="modal-title fs-5" id="exampleModalLabel_4">Repostajes y otros</h1>
+        			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="cerrar-repostaje"></button>
+      			</div>
+      			<div class="modal-body">
+					<h3>Registrar repostaje</h3>
+					<div class="form-solicitud">
+						<h3 id="mensaje-repostaje"></h3>
+						<div class="texto-flotante" id="texto-flotante-backend">
+							<h3 id="mensaje-backend"></h3>
+						</div>
+						<label for="servicio">Servicio</label>
+						<input name="servicio" id="servicio" class="motivo btn btn-secondary" required disabled>
+						<label for="vehiculo">Vehículo</label>
+						<input name="vehiculo" id="vehiculo" class="motivo btn btn-secondary" required disabled>
+						<label for="litros">Cantidad (litros)</label>
+						<input type="number" name="litros" id="litros" class="motivo form-control" min="0.01" max="200" step="0.01" required>
+						<label for="importe">Importe (€)</label>
+						<input type="number" name="importe" id="importe" class="motivo form-control" min="0.01" step="0.01" required>
+						<label for="ticket">Ticket / Factura</label>
+						<input name="ticket" id="ticket" class="motivo form-control" required>
+						<label for="observaciones">Observaciones</label>
+						<textarea name="observaciones" id="observaciones" class="motivo form-control" style="resize: none;"></textarea>
+					</div>
+      			</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        			<button type="button" class="btn btn-primary" id="registro-repostaje">Registrar repostaje / otro</button>
+      			</div>
+    		</div>
+  		</div>
+	</div>
+
+	<center>
+		<h1>Detalles</h1>
+		<h2>Servicio activo de <strong id="usuario"></strong></h2>
+		
+		<div class="botones">
+			<button id="historial" class="btn btn-info">Ver mi historial</button>
+			<button id="dashboard" class="btn btn-info">Volver a dashboard</button>
+			<button id="cerrar-sesion" class="btn btn-danger">cerrar sesión</button>
+		</div>
+	
+		<div class="texto-flotante" id="texto-flotante">
+			<h3 id="mensaje"></h3>
+		</div>
+	
+	    <div id="mis-servicios"></div>
+
+	</center>
+
+	<script src="../js/api.js"></script>
+	<script src="../js/auth.js"></script>
+	<script src="../js/detalles.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

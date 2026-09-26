@@ -1,0 +1,276 @@
+/* ==========================================================================
+   Variables Globales y Reset
+   ========================================================================== */
+:root {
+    --bg-dark: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    --primary-hover: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --focus-ring: rgba(99, 102, 241, 0.35);
+    --shadow-glow: 0 10px 30px -10px rgba(99, 102, 241, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.texto-flotante{
+    background: grey;
+    color: red;
+    width: 50%;
+    text-align: center;
+    border-radius: 20px 20px 20px 20px;
+    position: fixed;
+    display: none;
+}
+
+h1{
+    color: red;
+}
+
+.contenedor-elementos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #555555cc;
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+}
+
+a{
+  text-decoration: none;
+  color: #333;
+  margin: 0.5%;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+form{
+    /*display: flex;*/
+    flex-direction: column;
+    align-items: center;
+}
+.form-solicitud{
+    display: flex;
+    flex-direction: column;
+}
+.form-solicitud > label{
+    height: 30px;
+}
+.card{
+    margin: 10px;
+}
+#servicios-publicados, #lista-servicios, #servicios-fin, #solicitudes{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.botones > button{
+    margin: 10px;
+}
+
+.motivo{
+    resize: none;
+}
+
+.contenedor{
+    display: flex;
+    align-items: stretch;
+}
+.contenedor > div{
+    width: 50%;
+}
+/**********************************GEMINI***************************************************************
+/* ==========================================================================
+   Contenedor Principal y Fondo
+   ========================================================================== */
+body {
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.15) 0px, transparent 50%);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Anulamos el efecto visual directo de <center> para controlar el layout de forma moderna */
+center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* ==========================================================================
+   Card / Tarjeta (.contenedor-elementos)
+   ========================================================================== */
+.contenedor-elementos {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), var(--shadow-glow);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Encabezado H1 */
+h1 {
+    color: var(--text-main);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   Formulario e Inputs
+   ========================================================================== */
+#form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* Labels */
+label {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: -0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Inputs de Bootstrap (.form-control) */
+.form-control {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 10px !important;
+    color: var(--text-main) !important;
+    padding: 0.8rem 1rem !important;
+    font-size: 0.95rem;
+    transition: all 0.25s ease !important;
+}
+
+.form-control:focus {
+    outline: none !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 4px var(--focus-ring) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+}
+
+/* Placeholder */
+.form-control::placeholder {
+    color: #64748b;
+}
+
+/* ==========================================================================
+   Botones (.btn / .btn-primary)
+   ========================================================================== */
+.btn-primary, 
+#ir_registro {
+    width: 100%;
+    background: var(--primary-gradient) !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 0.85rem 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+    display: block;
+    text-align: center;
+}
+
+.btn-primary:hover, 
+#ir_registro:hover {
+    background: var(--primary-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:active, 
+#ir_registro:active {
+    transform: translateY(0);
+}
+
+/* Botón secundario de registro */
+#ir_registro {
+    background: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    box-shadow: none;
+}
+
+#ir_registro:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   Sección inferior y Mensajes
+   ========================================================================== */
+.contenedor-elementos > p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: -0.2rem;
+}
+
+#mensaje {
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    min-height: 1.25rem;
+    font-weight: 500;
+    color: #f87171; /* Color rojo de alerta por defecto */
+}
+/*******************************************************************************************************/
+@media(max-width: 800px) {
+    .hero{
+        background: url('../img/wllp_2.avif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: calc(100% + 150px);
+    }
+}
+
+@media(max-width: 400px) {
+    .hero{
+        background: url('../img/wllp_3.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+}
+@media(max-width: 320px) {
+    .hero{
+        background-position: center;
+    }
+}

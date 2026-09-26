@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../icons/carro.png">
+	<link rel="stylesheet" href="../css/transp.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>transport</title>
+</head>
+<body>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar Reserva</h1>
+        			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      			</div>
+      			<div class="modal-body">
+        			<h5>¿Está seguro que quiere reservar este servicio?</h5>
+					<h6 class="text-danger">Al aceptar, este servicio quedará inhabilitado para otros conductores</h6>
+					<div id="atributos-modal">
+						<p id="auto"></p>
+						<p id="origen"></p>
+						<p id="destino"></p>
+					</div>
+      			</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        			<button type="button" class="btn btn-primary" id="confirmar">Aceptar</button>
+      			</div>
+    		</div>
+  		</div>
+	</div>
+
+	<center>
+		<h1>Dashboard</h1>
+		<h3>Bienvenido: <strong id="usuario"></strong></h3>
+		<button id="detalles" class="btn btn-info">Ver mi servicio actual</button>
+		<button id="cerrar-sesion" class="btn btn-danger">cerrar sesión</button>
+	
+		<div class="texto-flotante" id="texto-flotante">
+			<h3 id="mensaje"></h3>
+		</div>
+	
+    	<h2>Traslados disponibles</h2>
+		<div id="lista-servicios"></div>
+		<h2>Otros traslados</h2>
+		<div id="lista-otros"></div>
+	</center>
+
+	<script src="../js/dashboard.js"></script>
+	<script src="../js/api.js"></script>
+	<script src="../js/auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
