@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/"
+  to = "/vistas/index.html"
+  status = 200
