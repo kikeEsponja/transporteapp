@@ -2,6 +2,7 @@ const express = require('express');
 const usuarioRoutes = require('./routes/usuarios.routes');
 const db = require('./config/database');
 const authRoutes = require('./routes/auth.routes');
+const cors = require('cors');
 const serviciosRoutes = require('./routes/servicios.routes');
 const manejarError = require('./middleware/error.middleware');
 const repostajesRoutes = require('./routes/repostajes.routes');
@@ -13,6 +14,11 @@ const path = require('path');
 
 const app = express();
 
+const corsOptions = {
+  origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://trasladoscontrol.netlify.app/']
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(express.static(
