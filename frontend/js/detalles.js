@@ -248,12 +248,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                     datosVideo.append('momento', 'recogida');
 
                     try {
+                        //const respuesta = await fetch(`/servicios/${servicioSeleccionadoId}/fotos`, { // línea para local
                         const respuesta = await fetch(`https://transporteapp-backend.onrender.com/servicios/${servicioSeleccionadoId}/fotos`, {
                             method: 'POST',
                             headers: { Authorization: `Bearer ${obtenerToken()}` },
                             body: datos
                         });
 
+                        //const respuestaVideo = await fetch(`/servicios/${servicioSeleccionadoId}/video`, { // línea para local
                         const respuestaVideo = await fetch(`https://transporteapp-backend.onrender.com/servicios/${servicioSeleccionadoId}/video`, {
                             method: 'POST',
                             headers: { Authorization: `Bearer ${obtenerToken()}` },
@@ -366,13 +368,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                     datosVideoEntrega.append('momento', 'entrega');
 
                     try {
-                        const respuestaEntrega = await fetch(`/servicios/${servicioSeleccionadoIdEntrega}/fotos`, {
+                        //const respuestaEntrega = await fetch(`/servicios/${servicioSeleccionadoIdEntrega}/fotos`, { // línea para local
+                        const respuestaEntrega = await fetch(`https://transporteapp-backend.onrender.com/servicios/${servicioSeleccionadoIdEntrega}/fotos`, {
                             method: 'POST',
                             headers: { Authorization: `Bearer ${obtenerToken()}` },
                             body: datosEntrega
                         });
 
-                        const respuestaVideoEntrega = await fetch(`/servicios/${servicioSeleccionadoIdEntrega}/video`, {
+                        //const respuestaVideoEntrega = await fetch(`/servicios/${servicioSeleccionadoIdEntrega}/video`, { // línea para local
+                        const respuestaVideoEntrega = await fetch(`https://transporteapp-backend.onrender.com/servicios/${servicioSeleccionadoIdEntrega}/video`, {
                             method: 'POST',
                             headers: { Authorization: `Bearer ${obtenerToken()}` },
                             body: datosVideoEntrega
