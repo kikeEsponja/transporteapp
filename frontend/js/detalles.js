@@ -248,13 +248,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                     datosVideo.append('momento', 'recogida');
 
                     try {
-                        const respuesta = await fetch(`/servicios/${servicioSeleccionadoId}/fotos`, {
+                        const respuesta = await fetch(`https://trasladoscontrol.netlify.app/servicios/${servicioSeleccionadoId}/fotos`, {
                             method: 'POST',
                             headers: { Authorization: `Bearer ${obtenerToken()}` },
                             body: datos
                         });
 
-                        const respuestaVideo = await fetch(`/servicios/${servicioSeleccionadoId}/video`, {
+                        const respuestaVideo = await fetch(`https://trasladoscontrol.netlify.app/servicios/${servicioSeleccionadoId}/video`, {
                             method: 'POST',
                             headers: { Authorization: `Bearer ${obtenerToken()}` },
                             body: datosVideo
