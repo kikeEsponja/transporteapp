@@ -91,6 +91,27 @@ form{
 .contenedor > div{
     width: 50%;
 }
+/*===================================================== EL LOGO =====================================================*/
+.logo{
+    border-radius: 50%;
+    width: 25%;
+    
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    animation: giro 4s infinite linear;
+}
+.mensaje-carrusel{
+    background: white;
+    color: black;
+}
+@keyframes giro{
+    0%{
+        transform: rotateY(0deg);
+    }
+    100%{
+        transform: rotateY(360deg);
+    }
+}
 /**********************************GEMINI***************************************************************
 /* ==========================================================================
    Contenedor Principal y Fondo

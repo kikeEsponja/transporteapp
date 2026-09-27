@@ -1,133 +1,15 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar publicación de servicio</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="publicar-modal">
-                <p>¿Está seguro de publicar este servicio?</p>
-                <div id="atributos-modal">
-        			<p id="auto-publicar"></p>
-		    		<p id="origen-publicar"></p>
-					<p id="destino-publicar"></p>
-                    <p id="observ-publicar"></p>
-				</div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="confirmar-publicar">Aceptar</button>
-            </div>
-        </div>
+<div class="contenedor-elementos text-light">
+    <h1>ON ROAD SYSTEM 1.0</h1>
+    <h2>Bienvenido a la plataforma</h2>
+    <div>
+        <p>Acceda con sus credenciales</p> 
+        <a class="btn btn-outline-success w-100 text-light" href="../vistas/login.html">Login</a>
+        <!--<a class="btn btn-outline-success w-100 text-light" href="./login.html">Login</a>-->
+    </div>
+    <h4>O</h4>
+    <div>
+        <p>Regístrese como nuevo usuario</p>
+        <a class="btn btn-outline-success w-100 text-light" href="../vistas/registro.html">Registro</a>
+        <!--<a class="btn btn-outline-success w-100 text-light" href="./registro.html">Registro</a>-->
     </div>
 </div>
-<div class="modal fade" id="exampleModal_2" tabindex="-1" aria-labelledby="exampleModalLabel_2" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel_2">Confirmar cancelación de servicio</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="cancelar-modal">
-                <p>¿Está seguro de cancelar este servicio?</p>
-                <div id="atributos-modal-cancelar">
-					<p id="auto-cancelar"></p>
-					<p id="origen-cancelar"></p>
-					<p id="destino-cancelar"></p>
-                    <p id="conductor-cancelar"></p>
-				</div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="confirmar-cancelar">Aceptar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="exampleModal_3" tabindex="-1" aria-labelledby="exampleModalLabel_3" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel_3">Ingresar Vehículo</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body contenedor-elementos" id="ingresar-vehiculo-modal">
-                <form id="form-ingresar-vehiculo">
-                    <label for="marca">Ingrese marca</label>
-                    <input type="text" id="marca" name="marca" required class="form-control">
-                    <label for="modelo">Ingrese modelo</label>
-                    <input type="text" id="modelo" name="modelo" required class="form-control">
-                    <label for="matricula">Ingrese matrícula</label>
-                    <input type="text" id="matricula" name="matricula" required class="form-control">
-                    <label for="color">Color</label>
-                    <input type="text" id="color" name="color" class="form-control">
-                    <label for="combustible">Tipo de Combustible</label>
-                    <input type="text" id="combustible" name="combustible" required class="form-control">
-                    <label for="observaciones">Observaciones</label>
-                    <input type="text" id="observaciones" name="observaciones" required class="form-control">            
-                    <button id="boton-reg-vehiculo" class="btn btn-success">Ingresar Vehículo</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="exampleModal_4" tabindex="-1" aria-labelledby="exampleModalLabel_4" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel_4">Ingresar Tienda</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body contenedor-elementos" id="ingresar-tienda-modal">
-                <form id="form-ingresar-tienda">
-                    <label for="nombre-tienda">Ingrese nombre de la tienda</label>
-                    <input type="text" id="nombre-tienda" name="nombre-tienda" required  class="form-control">
-                    <label for="direccion-tienda">Ingrese dirección de la tienda</label>
-                    <input type="text" id="direccion-tienda" name="direccion-tienda" required  class="form-control">
-                    <label for="ciudad-tienda">Ingrese la ciudad donde se encuentra la tienda</label>
-                    <input type="text" id="ciudad-tienda" name="ciudad-tienda" required  class="form-control">
-                    <label for="telefono-tienda">Ingrese teléfono de la tienda</label>
-                    <input type="tel" id="telefono-tienda" name="telefono-tienda"  class="form-control">
-                    <label for="horario-tienda">Ingrese el horario de la tienda</label>
-                    <input type="text" id="horario-tienda" name="horario-tienda" required  class="form-control">
-                    <button id="boton-reg-tienda" class="btn btn-success">Ingresar Tienda</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="mensaje-vehiculo"></div>
-<div id="mensaje-tienda"></div>
-
-<div class="contenedor">
-    <div class="formulario">
-        <h2>Publicar traslado</h2>
-        <form id="form-publicar">
-            <label for="car">Vehículo</label>
-            <select name="vehiculo" id="vehiculo" class="form-control">
-                <option value="">Selecciona un vehículo</option>
-            </select>
-            <label for="recoger">Lugar de recogida</label>
-            <select name="recoger" id="recoger" class="form-control">
-                <option value="">Selecciona una tienda de origen</option>
-            </select>
-            <label for="recoger">Lugar de entrega</label>
-            <select name="entregar" id="entregar" class="form-control">
-                <option value="">Selecciona una tienda de destino</option>
-            </select>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Publicar</button>
-        </form>
-    </div>
-
-    <div class="botones">
-        <h2>Gestionar Activos</h2>
-        <button type="button" class="btn btn-info w-50" data-bs-toggle="modal" data-bs-target="#exampleModal_3">Ingresar vehículo</button>
-        <button type="button" class="btn btn-info w-50" data-bs-toggle="modal" data-bs-target="#exampleModal_4">Ingresar tienda</button>
-        <button type="button" class="btn btn-warning w-50" id="solicitudes-conductores">Solicitudes de conductores</button>
-        <button type="button" id="cerrar-sesion" class="btn btn-danger w-50">Cerrar sesión</button>
-    </div>
-</div>
-
-<div id="servicios-publicados"></div>
-<div id="servicios-fin"></div>
