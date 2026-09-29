@@ -3,9 +3,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         method: 'GET'
     });
 
-    llamadaHealth();
     console.log(llamadaHealth);
-    
+
     let botonLogin = document.getElementById('btn-login');
     let botonRegistro = document.getElementById('btn-registro');
 
