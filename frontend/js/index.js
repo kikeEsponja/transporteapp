@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     console.log(llamadaHealth, 'funcionando correctamente');
 
+    if(llamadaHealth){
+        let mensajeCarrusel = document.getElementById('mensaje-carrusel');
+        mensajeCarrusel.textContent = 'mensaje de espera';
+    }
+
     let botonLogin = document.getElementById('btn-login');
     let botonRegistro = document.getElementById('btn-registro');
 
