@@ -1,12 +1,22 @@
 document.addEventListener('DOMContentLoaded', async () => {
     let botonLogin = document.getElementById('btn-login');
     let botonRegistro = document.getElementById('btn-registro');
-    let mensajeCarrusel = document.getElementById('mensaje-carrusel');
+    let mensajeCarrusel = document.querySelectorAll('.carrusel-item');
     let loader = document.getElementById('loader-container');
 
     botonLogin.setAttribute('disabled', null);
     botonRegistro.setAttribute('disabled', null);
-    mensajeCarrusel.textContent = 'Esperando';
+    //mensajeCarrusel.textContent = 'Esperando';
+
+    mensajeCarrusel.forEach((mensaje, index) => {
+        mensaje.style.display = index === 0 ? 'block' : 'none';
+    });
+
+    const intervaloCarrusel = setInterval(() => {
+        mensajeCarrusel[mensajeActual].style.display = 'none';
+        mensajeActual = (mensajeActual + 1) % mensajeCarrusel.length;
+        mensajeCarrusel[mensajeActual].style.display = 'block';
+    }, 2500);
 
     const llamadaHealth = await fetch(`https://transporteapp-backend.onrender.com/health`, {
         method: 'GET'
@@ -15,13 +25,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log(llamadaHealth, 'funcionando correctamente');
 
     if(llamadaHealth){
-        mensajeCarrusel.textContent = 'Todo listo';
+
+        clearInterval(intervaloCarrusel);
+
+        //mensajeCarrusel.textContent = 'Todo listo';
+        mensajeCarrusel.forEach(mensaje => {
+            mensaje.style.display = 'none';
+        });
+
+        mensajeCarrusel[mensaje.length -1].style.display = 'block';
+        mensajeCarrusel[mensaje.length -1].textContent = 'Todo listo';
         
         botonLogin.removeAttribute('disabled', null);
         botonRegistro.removeAttribute('disabled', null);
         
         loader.style.display = 'none';
-        
+
         botonLogin.addEventListener('click', () =>{
             window.location.href="../vistas/login.html";
         });
