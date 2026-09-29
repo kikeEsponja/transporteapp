@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         method: 'GET'
     });
 
-    console.log(llamadaHealth);
+    console.log(llamadaHealth, 'funcionando correctamente');
 
     let botonLogin = document.getElementById('btn-login');
     let botonRegistro = document.getElementById('btn-registro');
