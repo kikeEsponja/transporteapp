@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let botonLogin = document.getElementById('btn-login');
     let botonRegistro = document.getElementById('btn-registro');
     let mensajeCarrusel = document.getElementById('mensaje-carrusel');
+    let loader = document.getElementById('loader-container');
 
     botonLogin.setAttribute('disabled', null);
     botonRegistro.setAttribute('disabled', null);
@@ -18,6 +19,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         botonLogin.removeAttribute('disabled', null);
         botonRegistro.removeAttribute('disabled', null);
+        
+        loader.style.display = 'none';
         
         botonLogin.addEventListener('click', () =>{
             window.location.href="../vistas/login.html";
