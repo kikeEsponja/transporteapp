@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    let botonLogin = document.getElementById('btn-login');
+    let botonRegistro = document.getElementById('btn-registro');
+    let mensajeCarrusel = document.getElementById('mensaje-carrusel');
+
+    botonLogin.setAttribute('disabled', null);
+    botonRegistro.setAttribute('disabled', null);
+    mensajeCarrusel.textContent = 'Esperando';
+
     const llamadaHealth = await fetch(`https://transporteapp-backend.onrender.com/health`, {
         method: 'GET'
     });
@@ -6,21 +14,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log(llamadaHealth, 'funcionando correctamente');
 
     if(llamadaHealth){
-        let mensajeCarrusel = document.getElementById('mensaje-carrusel');
-        mensajeCarrusel.textContent = 'mensaje de espera';
+        mensajeCarrusel.textContent = 'Todo listo';
+        
+        botonLogin.removeAttribute('disabled', null);
+        botonRegistro.removeAttribute('disabled', null);
+        
+        botonLogin.addEventListener('click', () =>{
+            window.location.href="../vistas/login.html";
+        });
+
+        botonRegistro.addEventListener('click', () =>{
+            window.location.href="../vistas/registro.html";
+        });
     }
-
-    let botonLogin = document.getElementById('btn-login');
-    let botonRegistro = document.getElementById('btn-registro');
-
-    botonLogin.setAttribute('disabled', null);
-    botonRegistro.setAttribute('disabled', null);
-
-    botonLogin.addEventListener('click', () =>{
-        window.location.href="../vistas/login.html";
-    });
-
-    botonRegistro.addEventListener('click', () =>{
-        window.location.href="../vistas/registro.html";
-    });
 });
