@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     console.log(llamadaHealth, 'funcionando correctamente');
 
-    if(llamadaHealth){
+    if(llamadaHealth.ok){
 
         clearInterval(intervaloCarrusel);
 
@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             mensaje.style.display = 'none';
         });
 
-        mensajeCarrusel[mensaje.length -1].style.display = 'block';
-        mensajeCarrusel[mensaje.length -1].textContent = 'Todo listo';
+        mensajeCarrusel[mensajeCarrusel.length -1].style.display = 'block';
+        mensajeCarrusel[mensajeCarrusel.length -1].textContent = 'Todo listo';
         
         botonLogin.removeAttribute('disabled', null);
         botonRegistro.removeAttribute('disabled', null);
