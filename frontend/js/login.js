@@ -35,17 +35,17 @@ formulario.addEventListener('submit', async(event) => {
 
     solictudRecupPassword.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+        console.log('intento de leer la API');
         const email = document.getElementById('email-recup').value.trim();
 
         const mensaje = document.getElementById('mensaje');
         try{
-            console.log('intento de leer la API');
+            
             const res = await api('/auth/olvido-password', {
                 method: 'POST',
                 body: JSON.stringify({ email })
             });
-        
+            
             if(mensaje){
                 modalRecupPassword.style.display = 'none';
                 mensaje.className = 'alert alert-success mt3';
