@@ -40,6 +40,7 @@ formulario.addEventListener('submit', async(event) => {
 
         const mensaje = document.getElementById('mensaje');
         try{
+            console.log('intento de leer la API');
             const res = await api('/auth/olvido-password', {
                 method: 'POST',
                 body: JSON.stringify({ email })
