@@ -40,7 +40,10 @@ formulario.addEventListener('submit', async(event) => {
 
         const mensaje = document.getElementById('mensaje');
         try{
-            const res = await recupPass(email);
+            const res = await api('/auth/olvido-password', {
+                method: 'POST',
+                body: JSON.stringify({ email })
+            });
         
             if(mensaje){
                 modalRecupPassword.style.display = 'none';
