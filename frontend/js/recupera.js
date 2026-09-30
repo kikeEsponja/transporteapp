@@ -4,7 +4,7 @@ const obtenerTokenRecuperacion = () => {
     );
     return parametros.get('token');
 };
-//fetch
+
 document.addEventListener('DOMContentLoaded', () => {
     const token = obtenerTokenRecuperacion();
 
