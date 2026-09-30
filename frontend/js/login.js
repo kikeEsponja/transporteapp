@@ -29,12 +29,12 @@ formulario.addEventListener('submit', async(event) => {
         mensaje.textContent = error.message;
     }
 });
-
-    const solictudRecupPassword = document.getElementById('enviar-solicitud-recup');
     const modalRecupPassword = document.getElementById('exampleModal');
+    const solictudRecupPassword = document.getElementById('enviar-solicitud-recup');
 
-    solictudRecupPassword.addEventListener('submit', async (e) => {
+    solictudRecupPassword.addEventListener('click', async (e) => {
         e.preventDefault();
+        
         console.log('intento de leer la API');
         const email = document.getElementById('email-recup').value.trim();
 
