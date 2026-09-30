@@ -50,7 +50,7 @@ solictudRecupPassword.addEventListener('click', async (e) => {
         const res = await api('/auth/olvido-password', {
             method: 'POST',
             headers: {
-                'content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ email })
         });
