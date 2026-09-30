@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             mensaje.style.display = 'none';
         });
 
-        mensajeCarrusel[mensajeCarrusel.length -1].style.display = 'block';
+        mensajeCarrusel[mensajeCarrusel.length -1].style.display = 'flex';
         mensajeCarrusel[mensajeCarrusel.length -1].textContent = 'Todo listo';
         
         botonLogin.removeAttribute('disabled', null);
