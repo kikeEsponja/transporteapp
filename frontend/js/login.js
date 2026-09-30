@@ -30,6 +30,10 @@ formulario.addEventListener('submit', async(event) => {
     }
 });
 
+document.getElementById('ir_recupera').addEventListener('click', () =>{
+    window.location.href = './recupera.html';
+});
+
 document.getElementById('ir_registro').addEventListener('click', () =>{
     window.location.href = './registro.html';
 });
