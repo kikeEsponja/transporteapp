@@ -30,9 +30,33 @@ formulario.addEventListener('submit', async(event) => {
     }
 });
 
-document.getElementById('ir_recupera').addEventListener('click', () =>{
-    window.location.href = './recupera.html';
-});
+    const solictudRecupPassword = document.getElementById('enviar-solicitud-recup');
+    const modalRecupPassword = document.getElementById('exampleModal');
+
+    solictudRecupPassword.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const email = document.getElementById('email-recup').value.trim();
+
+        const mensaje = document.getElementById('mensaje');
+        try{
+            const res = await recupPass(email);
+        
+            if(mensaje){
+                modalRecupPassword.style.display = 'none';
+                mensaje.className = 'alert alert-success mt3';
+                mensaje.textContent = res.message;
+            }
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+
+        }catch(error){
+            console.error('Error al solicitar: ', error);
+            alert(error.message || 'Error al solicitar recuperación de password');
+        }
+    });
 
 document.getElementById('ir_registro').addEventListener('click', () =>{
     window.location.href = './registro.html';

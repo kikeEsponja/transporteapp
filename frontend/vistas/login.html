@@ -9,6 +9,27 @@
     <title>transport</title>
 </head>
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Solicitud de restablecimiento de password</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="publicar-modal">
+                    <p>Ingrese su correo electrónico</p>
+                    <label for="email-recup">Password</label>
+                    <input type="email" id="email-recup">
+                    <p id="mensaje"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="enviar-solicitud-recup">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <center>
             <h1>Iniciar sesión</h1>
 
@@ -27,7 +48,8 @@
                 </form>
 
                 <p>¿Olvidaste tu contraseña?</p>
-                <button id="ir_recupera" type="button" class="btn btn-primary">Click aquí</button>
+                <!--<button id="ir_solicitud-recup" type="button" class="btn btn-primary">Click aquí</button>-->
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Click aquí</button>
 
                 <p>¿No tienes cuenta?</p>
                 <button id="ir_registro" type="button" class="btn btn-primary">Registrarse</button>

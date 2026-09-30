@@ -1,40 +1,40 @@
-<div class="contenedor-elementos text-light">
-    <img src="../img/logo.jpeg" class="logo" alt="logo" id="logo">
-    <h1 class="text-center">ON ROAD SYSTEM 1.0</h1>
-    <h2 class="text-center">Bienvenido a la plataforma</h2>
-    <div>
-        <p>Acceda con sus credenciales</p> 
-        <button class="btn btn-outline-success w-100 text-light" id="btn-login">Login</button>
-    </div>
-    <h4>O</h4>
-    <div>
-        <p>Regístrese como nuevo usuario</p>
-        <button class="btn btn-outline-success w-100 text-light" id="btn-registro">Registro</button>
-    </div>
-    <br>
-    <div class="loader-container" id="loader-container">
-        <div class="car">
-            <div class="car-body">
-                <div class="car-top"></div>
-            </div>
-            <div class="wheel wheel-left"></div>
-            <div class="wheel wheel-right"></div>
-        </div>
-        <div class="road"></div>
-    </div>
-    <div class="contenedor-carrusel">
-        <div class="carrusel">                
-            <div class="carrusel-inner">
-                <div class="carrusel-item">
-                    <div class="frame">Cargando el sistema...</div>
-                </div>
-                <div class="carrusel-item">
-                    <div class="frame">Estableciendo conexión...</div>
-                </div>
-                <div class="carrusel-item">
-                    <div class="frame">Casi listo...</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="contenedor-elementos">
+    <form id="form-login">
+        <label for="email">Correo electrónico</label>
+        <input class="form-control" type="email" id="email" name="email" required>
+        <label for="password">Contraseña</label>
+        <input class="form-control" type="password" id="password" name="password" required>
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+    </form>
+    <p>¿Olvidaste tu contraseña?</p>
+    <button id="olvide-pass" type="button" class="btn btn-primary">Click aquí</button>
 </div>
+<script src="../js/auth.js"></script>
+<script>
+    const formulario = document.getElementById('form-login');
+    const mensaje = document.getElementById('mensaje');
+
+    formulario.addEventListener('submit', async(event) => {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        mensaje.textContent = '';
+
+        try{
+            const resultado = await login(email, password);
+
+            if(resultado.usuario.rol === 'ADMIN'){
+                window.location.href = './admin.html';
+            }else if(resultado.usuario.rol === 'CONDUCTOR'){
+                window.location.href = './dashboard.html';
+            }else{
+                mensaje.textContent = 'Rol de usuario no reconocido';
+            }
+        }catch (error){
+            mensaje.textContent = error.message;
+        }
+    });
+</script>
+<script src="../js/api.js"></script>
