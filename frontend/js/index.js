@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     let mensajeActual = 0;
 
     mensajeCarrusel.forEach((mensaje, index) => {
-        mensaje.style.display = index === 0 ? 'block' : 'none';
+        mensaje.style.display = index === 0 ? 'flex' : 'none';
     });
 
     const intervaloCarrusel = setInterval(() => {
         mensajeCarrusel[mensajeActual].style.display = 'none';
         mensajeActual = (mensajeActual + 1) % mensajeCarrusel.length;
-        mensajeCarrusel[mensajeActual].style.display = 'block';
+        mensajeCarrusel[mensajeActual].style.display = 'flex';
     }, 2500);
 
     const llamadaHealth = await fetch(`https://transporteapp-backend.onrender.com/health`, {
