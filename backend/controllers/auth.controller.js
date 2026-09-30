@@ -51,6 +51,7 @@ const solicitarRecuperacion = async (req, res, next) => {
 
         res.json(resultado);
     }catch(error){
+        console.error('Error recuperando password: ', error);
         next(error);
     }
 };
