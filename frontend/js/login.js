@@ -29,38 +29,47 @@ formulario.addEventListener('submit', async(event) => {
         mensaje.textContent = error.message;
     }
 });
-    const modalRecupPassword = document.getElementById('exampleModal');
-    const solictudRecupPassword = document.getElementById('enviar-solicitud-recup');
+const modalRecupPassword = document.getElementById('exampleModal');
+const solictudRecupPassword = document.getElementById('enviar-solicitud-recup');
 
-    solictudRecupPassword.addEventListener('click', async (e) => {
-        e.preventDefault();
-        
-        console.log('intento de leer la API');
-        const email = document.getElementById('email-recup').value.trim();
+solictudRecupPassword.addEventListener('click', async (e) => {
+    e.preventDefault();
 
-        const mensaje = document.getElementById('mensaje');
-        try{
+    console.log('intento de leer la API');
+    const emailInput = document.getElementById('email-recup');
+    const email = emailInput ? emailInput.value.trim() : '';
+    const mensaje = document.getElementById('mensaje');
+
+    if(!email){
+        alert('Ingresa un correo electrónico!');
+        return;
+    }
+
+    try{
             
-            const res = await api('/auth/olvido-password', {
-                method: 'POST',
-                body: JSON.stringify({ email })
-            });
+        const res = await api('/auth/olvido-password', {
+            method: 'POST',
+            headers: {
+                'content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email })
+        });
             
-            if(mensaje){
-                modalRecupPassword.style.display = 'none';
-                mensaje.className = 'alert alert-success mt3';
-                mensaje.textContent = res.message;
-            }
-
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000);
-
-        }catch(error){
-            console.error('Error al solicitar: ', error);
-            alert(error.message || 'Error al solicitar recuperación de password');
+        if(mensaje){
+            modalRecupPassword.style.display = 'none';
+            mensaje.className = 'alert alert-success mt-3';
+            mensaje.textContent = res.message;
         }
-    });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+
+    }catch(error){
+        console.error('Error al solicitar: ', error);
+        alert(error.message || 'Error al solicitar recuperación de password');
+    }
+});
 
 document.getElementById('ir_registro').addEventListener('click', () =>{
     window.location.href = './registro.html';

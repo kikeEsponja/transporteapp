@@ -113,97 +113,111 @@ form{
     }
 }
 /*========================================LOADER======================================================*/
-        /* Contenedor del loader */
-        .loader-container {
-          position: relative;
-          width: 160px;
-          height: 80px;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          align-items: center;
-        }
+/* Contenedor del loader */
+.loader-container {
+  position: relative;
+  width: 160px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
 
-        /* --- El Automóvil --- */
-        .car {
-          position: relative;
-          width: 100px;
-          height: 40px;
-          margin-bottom: 6px; /* Separación respecto a la pista */
-        }
+/* --- El Automóvil --- */
+.car {
+  position: relative;
+  width: 100px;
+  height: 40px;
+  margin-bottom: 6px; /* Separación respecto a la pista */
+  /* Animación de suspensión/bamboleo agregada aquí */
+  animation: bounce 0.6s ease-in-out infinite alternate;
+}
 
-        /* Cuerpo del auto */
-        .car-body {
-          position: absolute;
-          bottom: 10px;
-          width: 100%;
-          height: 20px;
-          background-color: #3b82f6; /* Color de la carrocería */
-          border-radius: 6px 12px 4px 4px;
-        }
+/* Cuerpo del auto */
+.car-body {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  height: 20px;
+  background-color: #3b82f6; /* Color de la carrocería */
+  border-radius: 6px 12px 4px 4px;
+}
 
-        /* Techo / Cabina */
-        .car-top {
-          position: absolute;
-          top: -12px;
-          left: 20px;
-          width: 50px;
-          height: 14px;
-          background-color: #3b82f6;
-          border-radius: 10px 10px 0 0;
-        }
+/* Techo / Cabina */
+.car-top {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  width: 50px;
+  height: 14px;
+  background-color: #3b82f6;
+  border-radius: 10px 10px 0 0;
+}
 
-        /* Ruedas con efecto de rotación */
-        .wheel {
-          position: absolute;
-          bottom: 2px;
-          width: 18px;
-          height: 18px;
-          background-color: #1e293b;
-          border: 3px solid #e2e8f0;
-          border-radius: 50%;
-          z-index: 2;
-          animation: spin 0.5s linear infinite;
-        }
+/* Ruedas */
+.wheel {
+  position: absolute;
+  bottom: 2px;
+  width: 18px;
+  height: 18px;
+  background-color: #1e293b;
+  border: 3px solid #e2e8f0;
+  border-radius: 50%;
+  z-index: 2;
+  animation: spin 0.4s linear infinite;
+}
 
-        .wheel-left { left: 12px; }
-        .wheel-right { right: 12px; }
+.wheel-left { left: 12px; }
+.wheel-right { right: 12px; }
 
-        /* --- El Suelo (Simulador de movimiento) --- */
-        .road {
-          width: 100%;
-          height: 4px;
-          border-radius: 2px;
-          /* Fondo discontinuo (punteado) que se repite */
-          background: repeating-linear-gradient(
-            90deg,
-            #94a3b8,
-            #94a3b8 12px,
-            transparent 12px,
-            transparent 20px
-          );
-          background-size: 40px 100%;
-          animation: moveRoad 0.4s linear infinite;
-        }
+/* --- El Suelo (Simulador de movimiento) --- */
+.road {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #94a3b8,
+    #94a3b8 12px,
+    transparent 12px,
+    transparent 20px
+  );
+  background-size: 40px 100%;
+  animation: moveRoad 0.4s linear infinite;
+}
 
-        /* --- Animaciones --- */
-            
-        /* Mueve el fondo del suelo hacia la izquierda */
-        @keyframes moveRoad {
-          0% {
-            background-position: 0 0;
-          }
-          100% {
-            background-position: -40px 0;
-          }
-        }
-        
-        /* Giro de ruedas */
-        @keyframes spin {
-          100% {
-            transform: rotate(360deg);
-          }
-        }
+/* --- Animaciones --- */
+
+/* Bamboleo de la suspensión del auto */
+@keyframes bounce {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-1.5px) rotate(-0.5deg);
+  }
+  100% {
+    transform: translateY(1px) rotate(0.5deg);
+  }
+}
+
+/* Mueve el fondo del suelo hacia la izquierda */
+@keyframes moveRoad {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -40px 0;
+  }
+}
+
+/* Giro de ruedas */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /*======================================================================================================*/
 /**********************************GEMINI***************************************************************
 /* ==========================================================================
