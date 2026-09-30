@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     botonLogin.setAttribute('disabled', null);
     botonRegistro.setAttribute('disabled', null);
     //mensajeCarrusel.textContent = 'Esperando';
+    let mensajeActual = 0;
 
     mensajeCarrusel.forEach((mensaje, index) => {
         mensaje.style.display = index === 0 ? 'block' : 'none';
