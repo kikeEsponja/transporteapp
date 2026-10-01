@@ -482,7 +482,7 @@ async function cargarRepostajes(){
             
             const mensajeAdminUsuario = document.getElementById('mensaje-admin-usuario'); 
             try { 
-                const res = await regUsuarioNuevo( nombreUsuario, apellidoUsuario, telUsuario, emailUsuario, passwordUsuario, rolUsuario ); 
+                const res = await crearUsuario( rolUsuario, nombreUsuario, apellidoUsuario, emailUsuario, telUsuario, passwordUsuario ); 
                 
                 if(mensajeAdminUsuario){ 
                     mensajeAdminUsuario.className = 'alert alert-success mt-3'; 
