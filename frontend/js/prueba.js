@@ -1,10 +1,21 @@
-const crearUsuario = async (usuario) => {
-    usuario.rol = usuario.rol.trim().toUpperCase();
-    usuario.nombre = usuario.nombre.trim();
-    usuario.apellido = usuario.apellido.trim();
-    usuario.email = usuario.email.trim().toLowerCase();
-    usuario.telefono = usuario.telefono.trim();
-    usuario.activo = 1;
-    usuario.created_at = ahora;
-    usuario.updated_at = ahora;
-}
+const registro = async ({ nombre, apellido, email, password, telefono }) => {
+    const password_hash = await bcrypt.hash(password, 10);
+
+    const usuario = {
+        nombre,
+        apellido,
+        email,
+        password_hash,
+        telefono,
+        rol: 'CONDUCTOR',
+        activo: 1,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+    };
+    const resultado = await usuariosModel.crearUsuario(usuario);
+
+    return{
+        message: 'Usuario registrado correctamente',
+        id: resultado.id
+    };
+};
