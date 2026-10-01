@@ -482,7 +482,7 @@ async function cargarRepostajes(){
             
             const mensajeAdminUsuario = document.getElementById('mensaje-admin-usuario'); 
             try { 
-                const res = await registro( nombre, apellido, email, password, telefono, rol );
+                const res = await crearUsuarioAdmin( nombre, apellido, email, password, telefono, rol );
                 
                 if(mensajeAdminUsuario){ 
                     mensajeAdminUsuario.className = 'alert alert-success mt-3'; 
@@ -496,7 +496,7 @@ async function cargarRepostajes(){
                 console.error('Error en el registro de usuario:', error); 
                 alert(error.message || 'Error al registrar usuario'); 
             } 
-        }); 
+        });
     }
 /**********************************SOLICITUDES DE CONDUCTORES********************************************** */    
     const botonSolicitudes = document.getElementById('solicitudes-conductores');

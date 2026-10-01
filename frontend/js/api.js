@@ -40,3 +40,17 @@ const api = async (endpoint, options = {}) => {
 
     return datos;
 };
+
+const crearUsuarioAdmin = async (obtenerTiendaPorNombre, apellido, obtenerUsuarioPorEmail, actualizarPassword, telefono, rol) => {
+    return await api('/usuarios', {
+        method: 'POST',
+        body: JSON.stringify({
+            nombre,
+            apellido, 
+            email,
+            password,
+            telefono,
+            rol
+        })
+    });
+};
