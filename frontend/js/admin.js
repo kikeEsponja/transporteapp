@@ -460,7 +460,45 @@ async function cargarRepostajes(){
             }
         });
     }
+/*==================================ADMINISTRAR PERFILES====================================================*/
+    const formAdmPerfiles = document.getElementById('form-adm-perfiles');
+    const modalAdmPerfiles = document.getElementById('exampleModal_5');
 
+    formAdmPerfiles.addEventListener('submit', async (e) => {
+        e.preventDefault();
+                             
+        const nombreUsuario = document.getElementById('nombre-usuario').value.trim();
+        const direccionUsuario = document.getElementById('apellido-usuario').value.trim();
+        const telUsuario = document.getElementById('tel-usuario').value.trim();
+        const emailUsuario = document.getElementById('email-usuario').value.trim();
+        const passwordUsuario = document.getElementById('password-usuario').value.trim();
+        const rolUsuario = document.getElementById('rol-usuario').value.trim();
+
+        if(rolUsuario !== "ADMIN" || rolUsuario !== "CONDUCTOR"){
+            alert('Rol inválido');
+            return;
+        }
+
+        const mensajeAdminUsuario = document.getElementById('mensaje-admin-usuario');
+        try{
+            const res = await regUsuarioNuevo(nombreUsuario, direccionUsuario, telUsuario, emailUsuario, passwordUsuario, rolUsuario);
+        
+            //alert('Tienda ingresada con éxito', res);
+            if(mensajeAdminUsuario){
+                modalAdmPerfiles.style.display = 'none';
+                mensajeAdminUsuario.className = 'alert alert-success mt3';
+                mensajeAdminUsuario.textContent = res.message;
+            }
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+
+        }catch(error){
+            console.error('Error en el registro de usuario: ', error);
+            alert(error.message || 'Error al registrar usuario');
+        }
+    });
 /**********************************SOLICITUDES DE CONDUCTORES********************************************** */    
     const botonSolicitudes = document.getElementById('solicitudes-conductores');
     if(botonSolicitudes){

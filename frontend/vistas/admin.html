@@ -126,12 +126,50 @@
             </div>
         </div>
     </div>
+    <!-- Quinto Modal -->
+    <div class="modal fade" id="exampleModal_5" tabindex="-1" aria-labelledby="exampleModalLabel_5" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel_5">Administrar Perfiles</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body contenedor-elementos" id="ingresar-usuario-modal">
+                    <form id="form-adm-perfiles">
+                        <div>
+                            <label for="nombre-usuario">Ingrese nombre</label>
+                            <input class="form-control h-25" type="text" id="nombre-usuario" name="nombre-usuario" required>
+
+                            <label for="apellido-usuario">Ingrese apellido</label>
+                            <input class="form-control h-25" type="text" id="apellido-usuario" name="apellido-usuario" required>
+
+                            <label for="tel-usuario">Ingrese número de teléfono</label>
+                            <input class="form-control h-25" type="tel" id="tel-usuario" name="tel-usuario" required>
+                        </div>
+
+                        <div>
+                            <label for="email-usuario">Correo electrónico</label>
+                            <input class="form-control h-25" type="email" id="email-usuario" name="email-usuario" required>
+            
+                            <label for="password-usuario">Contraseña</label>
+                            <input class="form-control h-25" type="password" id="password-usuario" name="password-usuario" required>
+
+                            <label for="rol-usuario">Rol</label>
+                            <input class="form-control h-25" type="text" id="rol-usuario" name="rol-usuario" required>
+                        </div>
+                        <button type="submit" id="boton-reg" class="btn btn-primary">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <center>
         <h1>Bienvenido <strong id="usuario"></strong></h1>
 
         <div id="mensaje-vehiculo"></div>
         <div id="mensaje-tienda"></div>
         <div id="mensaje-admin"></div>
+        <div id="mensaje-admin-usuario"></div>
 
         <div class="contenedor">
             <div class="formulario">
@@ -165,7 +203,7 @@
                 <button type="button" class="btn btn-info w-50" data-bs-toggle="modal" data-bs-target="#exampleModal_4">Ingresar tienda</button>
                 <button type="button" class="btn btn-warning w-50" id="solicitudes-conductores">Solicitudes de conductores</button>
                 <button type="button" class="btn btn-info w-50" id="ir-historico-repostajes">Histórico de repostajes</button>
-                <button type="button" class="btn btn-info w-50" id="administrar-perfiles">Administrar Perfiles</button>
+                <button type="button" class="btn btn-info w-50" data-bs-toggle="modal" data-bs-target="#exampleModal_5">Administrar perfiles</button>
                 <button type="button" id="cerrar-sesion" class="btn btn-danger w-50">Cerrar sesión</button>
             </div>
         </div>
