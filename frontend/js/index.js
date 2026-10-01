@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         mensajeCarrusel[mensajeActual].style.display = 'none';
         mensajeActual = (mensajeActual + 1) % mensajeCarrusel.length;
         mensajeCarrusel[mensajeActual].style.display = 'flex';
-    }, 2500);
+    }, 3500);
 
     const llamadaHealth = await fetch(`https://transporteapp-backend.onrender.com/health`, {
         method: 'GET'
