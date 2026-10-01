@@ -46,14 +46,13 @@ solictudRecupPassword.addEventListener('click', async (e) => {
     }
 
     try{
-            
         const res = await api('/auth/olvido-password', {
             method: 'POST',
             body: JSON.stringify({ email })
         });
             
         if(mensaje){
-            modalRecupPassword.style.display = 'none';
+            //modalRecupPassword.style.display = 'none';
             mensaje.className = 'alert alert-success mt-3';
             mensaje.textContent = res.message;
         }
