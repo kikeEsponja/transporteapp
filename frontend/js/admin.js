@@ -468,16 +468,16 @@ async function cargarRepostajes(){
         formAdmUsuario.addEventListener('submit', async (e) => { 
             e.preventDefault(); 
             
-            const nombreUsuario = document.getElementById('nombre-usuario').value.trim(); 
-            const apellidoUsuario = document.getElementById('apellido-usuario').value.trim(); 
-            const telUsuario = document.getElementById('tel-usuario').value.trim(); 
-            const emailUsuario = document.getElementById('email-usuario').value.trim(); 
-            const passwordUsuario = document.getElementById('password-usuario').value; 
-            const rolUsuario = document.getElementById('rol-usuario').value.trim(); 
+            const nombre = document.getElementById('nombre-usuario').value.trim(); 
+            const apellido = document.getElementById('apellido-usuario').value.trim(); 
+            const telefono = document.getElementById('tel-usuario').value.trim(); 
+            const email = document.getElementById('email-usuario').value.trim(); 
+            const password = document.getElementById('password-usuario').value; 
+            const rol = document.getElementById('rol-usuario').value.trim(); 
             
-            if(rolUsuario !== "ADMIN" && rolUsuario !== "CONDUCTOR"){ 
-                alert('Rol inválido'); 
-                return; 
+            if(rol !== "ADMIN" && rol !== "CONDUCTOR"){ 
+                alert('Rol inválido');
+                return;
             } 
             
             const mensajeAdminUsuario = document.getElementById('mensaje-admin-usuario'); 
