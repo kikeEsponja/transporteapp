@@ -1,40 +1,111 @@
-<div class="contenedor-elementos">
-    <form id="form-login">
-        <label for="email">Correo electrónico</label>
-        <input class="form-control" type="email" id="email" name="email" required>
-        <label for="password">Contraseña</label>
-        <input class="form-control" type="password" id="password" name="password" required>
-        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-    </form>
-    <p>¿Olvidaste tu contraseña?</p>
-    <button id="olvide-pass" type="button" class="btn btn-primary">Click aquí</button>
-</div>
-<script src="../js/auth.js"></script>
-<script>
-    const formulario = document.getElementById('form-login');
-    const mensaje = document.getElementById('mensaje');
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar publicación de servicio</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="publicar-modal">
+                    <p>¿Está seguro de publicar este servicio?</p>
+                    <div id="atributos-modal">
+                        info
+					</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmar-publicar">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Segundo Modal -->
+    <div class="modal fade" id="exampleModal_2" tabindex="-1" aria-labelledby="exampleModalLabel_2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel_2">Confirmar cancelación de servicio</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="cancelar-modal">
+                    <p>¿Está seguro de cancelar este servicio?</p>
+                    <div id="atributos-modal-cancelar">
+                        info
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmar-cancelar">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tercer Modal -->
+    <div class="modal fade" id="exampleModal_3" tabindex="-1" aria-labelledby="exampleModalLabel_3" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel_3">Ingresar Vehículo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body contenedor-elementos" id="ingresar-vehiculo-modal">
+                    <form id="form-ingresar-vehiculo">
+                        botones e inputs
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Cuarto Modal -->
+    <div class="modal fade" id="exampleModal_4" tabindex="-1" aria-labelledby="exampleModalLabel_4" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel_4">Ingresar Tienda</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body contenedor-elementos" id="ingresar-tienda-modal">
+                    <form id="form-ingresar-tienda">
+                        botones e inputs
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <center>
+        <div class="contenedor">
+            <div class="formulario">
+                <form id="form-publicar">
+                    <label for="buscar-vehiculo">Vehículo</label>
+                    <input type="text" id="buscar-vehiculo" class="form-control" placeholder="Busca por marca, modelo o matrícula..." autocomplete="off">
+                    <div id="resultados-vehiculos" class="list-group"></div>
+                    <input type="hidden" name="vehiculo" id="vehiculo">
+                    <label for="recoger">Lugar de recogida</label>
+                    <select name="recoger" id="recoger" class="form-control">
+                        <option value="">Selecciona una tienda de origen</option>
+                    </select>
+                    <label for="recoger">Lugar de entrega</label>
+                    <select name="entregar" id="entregar" class="form-control">
+                        <option value="">Selecciona una tienda de destino</option>
+                    </select>
+                    <label for="observaciones-publicar">Observaciones</label>
+                    <textarea name="observaciones" id="observaciones-publicar" class="form-control" style="resize: none;" placeholder="Observaciones para este servicio" value=""></textarea>
 
-    formulario.addEventListener('submit', async(event) => {
-        event.preventDefault();
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Publicar</button>
+                </form>
+            </div>
 
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
+            <div class="botones">
+                <h2>Gestionar Activos</h2>
+                <button type="button" class="btn btn-info w-50" data-bs-toggle="modal" data-bs-target="#exampleModal_3">Ingresar vehículo</button>
+                <button type="button" class="btn btn-info w-50" data-bs-toggle="modal" data-bs-target="#exampleModal_4">Ingresar tienda</button>
+                <button type="button" class="btn btn-warning w-50" id="solicitudes-conductores">Solicitudes de conductores</button>
+                <button type="button" class="btn btn-info w-50" id="ir-historico-repostajes">Histórico de repostajes</button>
+                <button type="button" id="cerrar-sesion" class="btn btn-danger w-50">Cerrar sesión</button>
+            </div>
+        </div>
+        <hr>
 
-        mensaje.textContent = '';
-
-        try{
-            const resultado = await login(email, password);
-
-            if(resultado.usuario.rol === 'ADMIN'){
-                window.location.href = './admin.html';
-            }else if(resultado.usuario.rol === 'CONDUCTOR'){
-                window.location.href = './dashboard.html';
-            }else{
-                mensaje.textContent = 'Rol de usuario no reconocido';
-            }
-        }catch (error){
-            mensaje.textContent = error.message;
-        }
-    });
-</script>
-<script src="../js/api.js"></script>
+        <h2>Traslados publicados</h2>
+        <div id="servicios-publicados"></div>
+        <h2>Traslados finalizados</h2>
+        <div id="servicios-fin"></div>

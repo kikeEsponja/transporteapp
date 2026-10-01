@@ -22,7 +22,7 @@ const crearUsuario = async (usuario) => {
     }
 
     usuario.rol = usuario.rol.trim().toUpperCase();
-    usuario.email = usuario.email.trim().toLowerCase();
+ //   usuario.email = usuario.email.trim().toLowerCase(); duplicado
 
     if(typeof usuario.nombre !== 'string' || usuario.nombre.trim() === ''){
         throw crearError('El nombre es obligatorio', 400);
@@ -35,6 +35,10 @@ const crearUsuario = async (usuario) => {
     if(typeof usuario.email !== 'string' || usuario.email.trim() === ''){
         throw crearError('El correo electrónico es obligatorio', 400);
     }
+
+    usuario.nombre = usuario.nombre.trim();
+    usuario.apellido = usuario.apellido.trim();
+    usuario.email = usuario.email.trim().toLowerCase();
 
     const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -70,21 +74,16 @@ const crearUsuario = async (usuario) => {
             usuario.telefono = null;
         }
     }
-
-    const existe = await usuariosModel.obtenerUsuarioPorEmail(usuario.email);
-
-    if(existe){
-        throw new Error('El correo ya está registrado');
-    }
     
     const saltRows = 10;
     usuario.password_hash = await bcrypt.hash(
-        usuario.password_hash,
+        usuario.password,
         saltRows
     )
 
     const ahora = new Date().toISOString();
 
+    usuario.activo = 1;
     usuario.created_at = ahora;
     usuario.updated_at = ahora;
 

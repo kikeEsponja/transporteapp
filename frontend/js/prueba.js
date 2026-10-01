@@ -1,126 +1,166 @@
-const login = async ({ email, password }) => {
-    const usuario = await usuariosModel.obtenerUsuarioPorEmail(email);    
-    if(!usuario){
-        throw new Error('Contraseña o correo incorrectos');
+const crearUsuario = async (usuario) => {
+
+    if(typeof usuario.rol !== 'string'){
+        throw crearError('el rol es obligatorio', 400);
     }
 
-    const passwordCorrecta = await bcrypt.compare(
-        password,
-        usuario.password_hash
-    );
+    usuario.rol = usuario.rol.trim().toUpperCase();
+    usuario.email = usuario.email.trim().toLowerCase();
 
-    if(!passwordCorrecta){
-        throw new Error('Correo o contrsaseña incorrectos');
+    if(typeof usuario.nombre !== 'string' || usuario.nombre.trim() === ''){
+        throw crearError('El nombre es obligatorio', 400);
     }
 
-    const token = jwt.sign(
-        {
-            id: usuario.id,
-            email: usuario.email,
-            rol: usuario.rol
-        },
-        jwtConfig.SECRET,
-        {
-            expiresIn: jwtConfig.EXPIRES_IN
+    if(typeof usuario.apellido !== 'string' || usuario.apellido.trim() === ''){
+        throw crearError('El apellido es obligatorio', 400);
+    }
+
+    if(typeof usuario.email !== 'string' || usuario.email.trim() === ''){
+        throw crearError('El correo electrónico es obligatorio', 400);
+    }
+
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if(!emailValido.test(usuario.email)){
+        throw crearError('El correo electrónico no es válido', 400);
+    }
+
+    const usuarioExistente = await usuariosModel.obtenerUsuarioPorEmail(usuario.email);
+
+    if(usuarioExistente){
+        throw crearError('Ya existe un usuario con ese email', 409);
+    }
+
+    if(typeof usuario.password !== 'string' || usuario.password.trim() === ''){
+        throw crearError('La contraseña es obligatoria', 400);
+    }
+
+    if(usuario.password.length < 6){
+        throw crearError('la contraseña debe tener al menos seis (6) caracteres', 400);
+    }
+
+    if(usuario.rol !== roles.ADMIN && usuario.rol !== roles.CONDUCTOR){
+        throw crearError('el rol no es válido', 400);
+    }
+
+    if(usuario.telefono !== undefined && usuario.telefono !== null){
+        if(typeof usuario.telefono !== 'string'){
+            throw crearError('El teléfono debe ser texto', 400);
         }
+        usuario.telefono = usuario.telefono.trim();
+
+        if(usuario.telefono === ''){
+            usuario.telefono = null;
+        }
+    }
+
+    const existe = await usuariosModel.obtenerUsuarioPorEmail(usuario.email);
+
+    if(existe){
+        throw new Error('El correo ya está registrado');
+    }
+    
+    const saltRows = 10;
+    usuario.password_hash = await bcrypt.hash(
+        usuario.password_hash,
+        saltRows
     )
 
-    return {
-        message: 'Login correcto',
-        token,
-        usuario: {
-            id: usuario.id,
-            nombre: usuario.nombre,
-            apellido: usuario.apellido,
-            email: usuario.email,
-            rol: usuario.rol
+    const ahora = new Date().toISOString();
+
+    usuario.created_at = ahora;
+    usuario.updated_at = ahora;
+
+    return await usuariosModel.crearUsuario(usuario);
+}
+
+const actualizarUsuario = async (id, datos) => {
+
+    await buscarUsuarioPorId(id);
+
+    if(
+        typeof datos.nombre !== 'string' ||
+        datos.nombre.trim() === ''
+    ){
+        throw crearError('El nombre es obligatorio', 400);
+    }
+
+    if(
+        typeof datos.apellido !== 'string' ||
+        datos.apellido.trim() === ''
+    ){
+        throw crearError('El apellido es obligatorio', 400);
+    }
+
+    if(
+        typeof datos.email !== 'string' ||
+        datos.email.trim() === ''
+    ){
+        throw crearError('El email es obligatorio', 400);
+    }
+
+    datos.nombre = datos.nombre.trim();
+    datos.apellido = datos.apellido.trim();
+    datos.email = datos.email.trim().toLowerCase();
+
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!emailValido.test(datos.email)){
+        throw crearError('El email no es válido', 400);
+    }
+
+    const usuarioConEseEmail =
+        await usuariosModel.obtenerUsuarioPorEmail(datos.email);
+
+    if(
+        usuarioConEseEmail &&
+        usuarioConEseEmail.id !== Number(id)
+    ){
+        throw crearError(
+            'Ya existe un usuario con ese email',
+            409
+        );
+    }
+
+    if(
+        typeof datos.rol !== 'string'
+    ){
+        throw crearError('El rol es obligatorio', 400);
+    }
+
+    datos.rol = datos.rol.trim().toUpperCase();
+
+    if(
+        datos.rol !== roles.ADMIN &&
+        datos.rol !== roles.CONDUCTOR
+    ){
+        throw crearError('El rol no es válido', 400);
+    }
+
+    if(
+        datos.telefono !== undefined &&
+        datos.telefono !== null
+    ){
+
+        if(typeof datos.telefono !== 'string'){
+            throw crearError(
+                'El teléfono debe ser texto',
+                400
+            );
         }
-    };
-};
 
-const solicitarRecuperacion = async (email) => {
+        datos.telefono = datos.telefono.trim();
 
-    const usuario = await usuariosModel.obtenerUsuarioPorEmail(email);
-
-    if(!usuario){
-        return{
-            message: 'Si el correo está registrado, recibirás instrucciones para restablecer tu contraseña'
-        };
+        if(datos.telefono === ''){
+            datos.telefono = null;
+        }
     }
 
-    await recuperacionModel.invalidarSolicitudesPorUsuario(usuario.id);
-    const token = crypto.randomBytes(32).toString('hex');
-
-    const tokenHash = crypto
-        .createHash('sha256')
-        .update(token)
-        .digest('hex');
-    
-    const expiresAt = new Date(
-        Date.now() + 30 * 60 * 1000
-    ).toISOString();
-
-    const solicitud = {
-        usuario_id: usuario.id,
-        token_hash: tokenHash,
-        expires_at: expiresAt,
-        usado: 0,
-        created_at: new Date().toISOString()
-    };
-
-    await recuperacionModel.crearSolicitud(solicitud);
-
-    // const enlace = `http://localhost:3000/vistas/recupera.html?token=${token}`; // para local
-    const enlace = `https://transporteapp-backend.onrender.com/vistas/recupera.html?token=${token}`; // para remoto
-
-    await emailService.enviarCorreoRecuperacion(
-        usuario.email,
-        enlace
-    );
-
-    return{
-        message: 'Si el correo está registrado, recibirás instrucciones para restablecer tu contraseña',
-    };
-};
-
-const restablecerPassword = async (token, nuevaPassword) => {
-    if(!token || !nuevaPassword){
-        throw new Error('El token y la nueva contraseña son obligatorios');
+    if(datos.activo !== 0 && datos.activo !== 1){
+        throw crearError('El estado activo debe ser 0 o 1', 400);
     }
 
-    const tokenHash = crypto
-        .createHash('sha256')
-        .update(token)
-        .digest('hex');
-    
-    const solicitud = await recuperacionModel.obtenerSolicitudPorTokenHash(tokenHash);
+    datos.updated_at = new Date().toISOString();
 
-    if(!solicitud){
-        throw new Error('El enlace de recuperación no es válido');
-    }
-
-    if(solicitud.usado === 1){
-        throw new Error('El enlace de recuperación ya ha sido utilizado');
-    }
-
-    if(new Date(solicitud.expires_at) < new Date()){
-        throw new Error('El enlace de recuperación ha caducado');
-    }
-
-    const passwordHash = await bcrypt.hash(nuevaPassword, 10);
-
-    const cambios = await usuariosModel.actualizarPassword(
-        solicitud.usuario_id,
-        passwordHash
-    );
-
-    if(cambios === 0){
-        throw new Error('No se pudo actualizar la contraseña');
-    }
-
-    await recuperacionModel.marcarSolicitudComoUsada(solicitud.id);
-
-    return{
-        message: 'Contraseña actualizada correctamente'
-    };
+    return await usuariosModel.actualizarUsuario(id, datos);
 };
