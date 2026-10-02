@@ -76,10 +76,9 @@ const crearUsuario = async (usuario) => {
     }
     
     const saltRows = 10;
-    usuario.password_hash = await bcrypt.hash(
-        usuario.password,
-        saltRows
-    )
+    usuario.password_hash = await bcrypt.hash(usuario.password, saltRows);
+
+    delete usuario.password; //eliminar si falla (hecho por GEMINI)
 
     const ahora = new Date().toISOString();
 
