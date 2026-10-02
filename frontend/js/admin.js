@@ -489,7 +489,7 @@ async function cargarRepostajes(){
                     mensajeAdminUsuario.textContent = res.message; 
 
                 }
-                modalAdmUsuario.hide();
+                modalAdmUsuario.style.display = 'none';
                 //setTimeout(() => { 
                 //    window.location.reload(); 
                 //}, 3000); 
