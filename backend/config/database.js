@@ -9,7 +9,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error(err.message);
     } else {
-        console.log("Base de datos conectada.");
+        console.log("Base de datos conectada en: ", dbPath);
     }
 
 });
