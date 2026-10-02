@@ -376,7 +376,7 @@ label {
     font-weight: 500;
     color: #f87171; /* Color rojo de alerta por defecto */
 }
-.tr{
+thead, tbody{
     font-size: 14px ;
 }
 /*******************************************************************************************************/
