@@ -388,6 +388,11 @@ thead, tbody{
         background-position: calc(100% + 150px);
     }
 }
+@media(max-width: 650px) {
+    .observaciones{
+        display: none;
+    }
+}
 
 @media(max-width: 400px) {
     .hero{

@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <th>Litros</th>
                         <th>Importe</th>
                         <th>Ticket</th>
-                        <th>Observaciones</th>
+                        <th class="observaciones">Observaciones</th>
                     </tr>
                 </thead>
                 <tbody>
