@@ -377,7 +377,7 @@ label {
     color: #f87171; /* Color rojo de alerta por defecto */
 }
 thead, tbody{
-    font-size: 8px ;
+    font-size: 12px ;
 }
 /*******************************************************************************************************/
 @media(max-width: 800px) {

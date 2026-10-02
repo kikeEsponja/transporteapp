@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td>${repostaje.litros} L</td>
                 <td>${repostaje.importe} €</td>
                 <td>${repostaje.ticket}</td>
-                <td>${repostaje.observaciones || '-'}</td>
+                <td class="observaciones">${repostaje.observaciones || '-'}</td>
             </tr>
             `;
         });
