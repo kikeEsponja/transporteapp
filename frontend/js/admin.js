@@ -487,11 +487,12 @@ async function cargarRepostajes(){
                 if(mensajeAdminUsuario){ 
                     mensajeAdminUsuario.className = 'alert alert-success mt-3'; 
                     mensajeAdminUsuario.textContent = res.message; 
-                } 
-                
-                setTimeout(() => { 
-                    window.location.reload(); 
-                }, 3000); 
+
+                }
+                modalAdmUsuario.hide();
+                //setTimeout(() => { 
+                //    window.location.reload(); 
+                //}, 3000); 
             } catch (error) { 
                 console.error('Error en el registro de usuario:', error); 
                 alert(error.message || 'Error al registrar usuario'); 
