@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <thead>
                     <tr>
                         <th>Fecha</th>
-                        <th>Servicio</th>
+                        <th class="observaciones">Servicio</th>
                         <th>Vehículo</th>
                         <th>Conductor</th>
                         <th>Litros</th>
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         html += `
             <tr>
                 <td>${fecha}</td>
-                <td>#${repostaje.servicio_id}</td>
+                <td class="observaciones">#${repostaje.servicio_id}</td>
                 <td>
                     ${repostaje.marca} ${repostaje.modelo}
                     <br>

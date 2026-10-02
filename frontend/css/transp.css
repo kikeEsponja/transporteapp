@@ -376,9 +376,9 @@ label {
     font-weight: 500;
     color: #f87171; /* Color rojo de alerta por defecto */
 }
-thead, tbody{
+/*thead, tbody{
     font-size: 12px ;
-}
+}*/
 /*******************************************************************************************************/
 @media(max-width: 800px) {
     .hero{
@@ -389,6 +389,9 @@ thead, tbody{
     }
 }
 @media(max-width: 650px) {
+    thead, tbody{
+        font-size: 12px ;
+    }
     .observaciones{
         display: none;
     }
