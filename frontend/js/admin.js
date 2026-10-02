@@ -490,9 +490,9 @@ async function cargarRepostajes(){
 
                 }
                 modalAdmUsuario.style.display = 'none';
-                //setTimeout(() => { 
-                //    window.location.reload(); 
-                //}, 3000); 
+                setTimeout(() => { 
+                    window.location.reload(); 
+                }, 3000); 
             } catch (error) { 
                 console.error('Error en el registro de usuario:', error); 
                 alert(error.message || 'Error al registrar usuario'); 
